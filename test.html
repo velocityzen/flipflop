@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Flip Flop Test</title>
+	<style>
+		html, body {margin: 0;}
+		article {
+			margin: 100px auto;
+			width: 900px;
+		}
+		div, h1 {
+			width: 400px;
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		div {
+			padding-top: 10px;
+			margin-right: 60px;
+		}
+
+		@media screen and (max-width: 900px) {
+			article { width: 400px;}
+			div {margin-right: 0;}
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="flipflop.js"></script>
+	<script>
+		$(function() {
+			new FlipFlop({
+				parent: 'article',
+				flip: 'div',
+				flop: 'h1',
+				width: 900,
+				cb: function(flipped) {
+					console.log(flipped);
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<article>
+		<div>
+			<p>Responsive plugin to swap elements order on window resizing.</p>
+			<p>Try to resize window and header and content of this article will swap they places.</p>
+		</div>
+		<h1>Flip Flop</h1>
+	</article>
+</body>
+</html>
