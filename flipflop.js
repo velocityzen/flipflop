@@ -53,8 +53,8 @@ var FlipFlop = function(options) {
 	self.$p = options.parent ? $(options.parent) : $w;
 	self.flip = options.flip;
 	self.flop = options.flop;
-	self.w = options.width ? options.width - getScrollbarWidth()[0] + 1 : undefined;
-	self.h = options.height ? options.height - getScrollbarWidth()[1] + 1 : undefined;
+	self.w = options.width ? options.width - getScrollbarWidth()[0] : undefined;
+	self.h = options.height ? options.height - getScrollbarWidth()[1] : undefined;
 	self.flipped = false;
 	self.cb = options.cb;
 
@@ -62,12 +62,12 @@ var FlipFlop = function(options) {
 		var ww = $w.width(),
 			hh = $w.height();
 
-		if( (ww < self.w || hh < self.h) && !self.flipped) {
+		if( (ww <= self.w || hh <= self.h) && !self.flipped) {
 			self.flipped = true;
 			self.ff();
 		}
 
-		if( (ww >= self.w || hh >= self.h) && self.flipped) {
+		if( (ww > self.w || hh > self.h) && self.flipped) {
 			self.flipped = false;
 			self.ff();
 		}
